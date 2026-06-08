@@ -28,7 +28,27 @@ import {
 function App() {
   const [showNav, setShowNav] = useState(true);
   const [loading, setLoading] = useState(true);
-
+const projects = [
+  {
+    title: "OJT Website System",
+    img: "/ojt-project.jpg",
+    desc: "Developed a responsive website during my internship.",
+    link: "https://schedulingsystem-ten.vercel.app/"
+  },
+  {
+    title: "Coffee Reservation System",
+    img: "/coffeeproject.jpg",
+    desc: "Built using HTML, CSS, and JavaScript.",
+    link: "https://coffee-reservation-nine.vercel.app/"
+  },
+  {
+    title: "Portfolio Project",
+    img: "/coffeeproject.jpg",
+    desc: "Personal portfolio website.",
+    link: "https://coffee-reservation-nine.vercel.app/"
+  }
+];
+const [currentProject, setCurrentProject] = useState(0);
   // Splash Screen
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -206,67 +226,49 @@ function App() {
   <h2 className="section-title">Projects</h2>
 
   <div className="projects-container">
+return (
+  <div>
 
-    {/* OJT Project */}
+    {/* Project Card */}
     <div className="project-card">
-      <img
-        src="/ojt-project.jpg"
-        alt="OJT Website System"
-        className="project-img"
-      />
+      <img src={projects[currentProject].img} alt="" />
 
-      <div className="project-content">
-        <h3>OJT Website System</h3>
+      <h3>{projects[currentProject].title}</h3>
 
-        <p>
-          Developed a responsive website during my internship,
-          featuring database integration, user authentication,
-          and modern UI design.
-        </p>
+      <p>{projects[currentProject].desc}</p>
 
-      <div className="project-links">
-  <a
-    href="https://schedulingsystem-ten.vercel.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="demo-btn"
-  >
-    Live Demo
-  </a>
-</div>
-      </div>
+      <a href={projects[currentProject].link}>
+        Live Demo
+      </a>
     </div>
 
-    {/* Portfolio Project */}
-    <div className="project-card">
-      <img
-        src="/portfolio-project.jpg"
-        alt="Personal Portfolio"
-        className="project-img"
-      />
+    {/* NAVIGATION BUTTONS */}
+    <div className="project-nav">
 
-      <div className="project-content">
-        <h3>Personal Portfolio</h3>
+      <button
+        onClick={() =>
+          setCurrentProject((prev) =>
+            prev === 0 ? projects.length - 1 : prev - 1
+          )
+        }
+      >
+        Prev
+      </button>
 
-        <p>
-          Built a modern React portfolio website showcasing
-          technical skills, projects, and professional background
-          with responsive design and animations.
-        </p>
+      <button
+        onClick={() =>
+          setCurrentProject((prev) =>
+            prev === projects.length - 1 ? 0 : prev + 1
+          )
+        }
+      >
+        Next
+      </button>
 
-       <div className="project-links">
-  <a
-    href="https://your-portfolio.netlify.app"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="demo-btn"
-  >
-    Live Demo
-  </a>
-</div>
-      </div>
     </div>
 
+  </div>
+);
   </div>
 </section>
      

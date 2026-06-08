@@ -437,18 +437,23 @@ textarea {
 .projects-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 30px;
+  flex-wrap: wrap;
   margin-top: 50px;
 }
 
 .project-card {
   width: 350px;
+  min-height: 520px;
+
   background: #050505;
   border: 2px solid #ff6a00;
   border-radius: 25px;
+
   overflow: hidden;
-  position: relative;
+
+  display: flex;
+  flex-direction: column;
 
   transition: all 0.4s ease;
 
@@ -471,6 +476,7 @@ textarea {
   height: 220px;
   object-fit: cover;
   display: block;
+
   transition: transform 0.4s ease;
 }
 
@@ -480,12 +486,16 @@ textarea {
 
 .project-content {
   padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .project-content h3 {
   color: white;
   margin-bottom: 15px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .project-content p {
@@ -495,7 +505,19 @@ textarea {
 }
 
 .project-links {
+  margin-top: auto;
   display: flex;
+  justify-content: flex-end; /* CHANGED: move button to right */
+  padding-top: 10px;
+}
+
+/* optional if you ever want left button */
+.project-links.left {
+  justify-content: flex-start;
+}
+
+/* optional center (your current default was center) */
+.project-links.center {
   justify-content: center;
 }
 .demo-btn {
@@ -510,6 +532,7 @@ textarea {
 
 .demo-btn:hover {
   transform: translateY(-3px);
+
   box-shadow:
     0 0 10px #ff6a00,
     0 0 20px rgba(255, 106, 0, 0.5);
